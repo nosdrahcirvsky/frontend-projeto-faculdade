@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1">
+        
+        <title>Pedido realizado!</title>
+
+        <link rel="shortcut icon" href="../images/silverware-1667988_640.png">
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <link rel="stylesheet" href="../css/conta-custom.css">
+        <link rel="stylesheet" href="../css/carrinho.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    </head>
+    
+    <body class="bg-success">
+        <nav class="navbar">
+            <div class="container-fluid">
+              <a href="../index">
+                <div class="logo"></div>
+              </a>
+              <div class="d-flex">
+                <a href="conta">
+                    <div class="nav-prof-pic rounded-circle" style="background-image: url('../images/uploads/${usuario.imagemPerfil}')"></div>
+                </a>
+              </div>
+            </div>
+        </nav>
+
+        <div class="itens-container text-light">
+            <h1 class="text-center">Seu pedido foi realizado! Aqui está um resumo da sua compra:</h1>
+            <hr>
+            <div class="total-info">
+                <div class="subtitulos">Data do pedido</div>
+                <div>${dataPedido}</div>
+            </div>
+            <hr>
+            <div class="total-info">
+                <div class="subtitulos">Restaurante</div>
+                <div>${pratoSelecionado.restaurante.razaoSocial}</div>
+            </div>
+            <hr>
+            <div class="total-info">
+                <div class="subtitulos">CNPJ</div>
+                <div>${pratoSelecionado.restaurante.cnpj}</div>
+            </div>
+            <hr>
+            <div class="total-info">
+                <div class="subtitulos">Telefone do restaurante</div>
+                <div>${pratoSelecionado.restaurante.usuario.telefone}</div>
+            </div>
+            <hr>
+            <div class="total-info">
+                <div class="subtitulos">Item</div>
+                <div>${pratoSelecionado.nomePrato}</div>
+            </div>
+            <hr>
+            <div class="total-info">
+                <div class="subtitulos">Total</div>
+                <div></div>
+            </div>
+            <hr>
+            <div class="total-info">
+                <div class="subtitulos">CPF do pagador</div>
+                <div>${meuCartao.cpf}</div>
+            </div>
+            <hr>
+            <div class="total-info">
+                <div class="subtitulos">Endereço de entrega</div>
+                <div>${meuEndereco.rua}, ${meuEndereco.bairro}, ${meuEndereco.cidade} (${meuEndereco.estado}), CEP ${meuEndereco.cep}</div>
+            </div>
+            <hr>
+        </div>
+            
+    </body>
+</html>

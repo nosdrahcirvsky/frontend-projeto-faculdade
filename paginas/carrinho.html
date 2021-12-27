@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1">
+
+    <title>Carrinho | ${usuario.nome}</title>
+
+    <link rel="shortcut icon" href="../images/silverware-1667988_640.png">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/conta-custom.css">
+    <link rel="stylesheet" href="../css/catalogo.css">
+    <link rel="stylesheet" href="../css/carrinho.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-dark">
+
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a href="../index">
+                <div class="logo"></div>
+            </a>
+            <div class="d-flex">
+                <a href="carrinho">
+                    <div class="nav-cart mx-3">
+                        <div class="total-de-itens">0</div>
+                    </div>
+                </a>
+                <a href="conta">
+                    <div class="nav-prof-pic rounded-circle"
+                        style="background-image: url('../images/uploads/${usuario.imagemPerfil}')"></div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="itens-container">
+        <div class="item">
+            <div class="nome-restaurate">${item.prato.restaurante.razaoSocial}</div>
+            <div class="nome-item">${item.prato.nomePrato}</div>
+            <div class="preco-item">${item.prato.preco}</div>
+            <form method="POST" action="../DeletarItemController">
+                <input type="hidden" name="item_id" value="${item.id}">
+                <button type="submit">
+                    <div class="remover-item rounded-circle">X</div>
+                </button>
+            </form>
+            <form method="POST" action="../ComprarItemController">
+                <input type="hidden" name="item_id" value="${item.prato.id}">
+                <button class="comprar-item" type="submit">
+                    comprar item
+                </button>
+            </form>
+        </div>
+        <hr>
+        <div class="total-info">
+            <div>Total</div>
+            <div>R$ ${precoTotalCarrinho}</div>
+        </div>
+        <hr>
+    </div>
+
+    <div class="links">
+        <a href="catalogo">
+            <div>Continuar comprando</div>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/jquery-3.6.0.js"></script>
+    <script src="../js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

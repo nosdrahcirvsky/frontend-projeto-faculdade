@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1">
+        
+        <title>Entrar</title>
+        
+        <link rel="shortcut icon" href="../images/silverware-1667988_640.png">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/custom.css">
+    </head>
+
+    <body class="bg-dark">
+        <main class="form-signin">
+            <form action="../conta" method="POST" class="needs-validation" novalidate>
+                <a href="../index"><img class="d-block mx-auto mb-4" src="../images/logodrrest.png"></a>
+                <div class="form-floating mt-1">
+                    <input type="email" class="form-control" id="floatingInput" name="email" placeholder="seu@email.com" required>
+                    <label for="floatingInput">Email</label>
+                    <div class="invalid-feedback">Insira um email válido</div>
+                </div>
+                <div class="form-floating mt-1">
+                    <input type="password" class="form-control" id="floatingPassword" name="pass" placeholder="Password" required>
+                    <label for="floatingPassword">Senha</label>
+                    <div class="invalid-feedback">Insira uma senha válida</div>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary mt-5" type="submit">Entrar</button>
+            </form>
+        </main>
+
+        <!-- Scripts -->
+        <script src="../js/jquery-3.6.0.js"></script>
+        <script src="../js/bootstrap.bundle.js"></script>
+        <script src="../js/validation.js"></script>
+    </body>
+</html>

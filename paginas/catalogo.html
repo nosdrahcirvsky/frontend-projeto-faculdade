@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1">
+
+    <title>Catálogo</title>
+
+    <link rel="shortcut icon" href="../images/silverware-1667988_640.png">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/conta-custom.css">
+    <link rel="stylesheet" href="../css/catalogo.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-dark">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a href="../index">
+                <div class="logo"></div>
+            </a>
+            <div class="d-flex">
+                <a href="carrinho">
+                    <div class="nav-cart mx-3">
+                        <div class="total-de-itens">0</div>
+                    </div>
+                </a>
+                <a href="conta">
+                    <div class="nav-prof-pic rounded-circle" style="background-image: url('../images/uploads/${usuario.imagemPerfil}')">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="blocos-container">
+        <div class="bloco"
+            style="background-image: linear-gradient(to bottom, transparent, black), url('../images/uploads/${prato.imagem}')">
+            <div class="categoria">${prato.categoria.nomeCategoria}</div>
+            <div class="preco">R$ ${prato.preco}</div>
+            <div class="qtd-vendas">${prato.quantidadeVendas} vendido(s)</div>
+            <div class="info-item">
+                <h2>${prato.nomePrato}</h2>
+                <hr>
+                <p>${prato.restaurante.razaoSocial}</p>
+            </div>
+            <div class="add-carrinho bg-danger">
+                <form action="meus_pratos" method="GET">
+                    <button type="submit" class="bg-danger">Editar ou excluir</button>
+                </form>
+            </div>
+            <div class="add-carrinho">
+                <form action="../CadastrarCarrinhoController" method="POST">
+                    <input type="hidden" name="id_usuario" value="${usuarioId}" />
+                    <input type="hidden" name="id_prato" value="${prato.id}" />
+                    <button type="submit">Adicionar ao carrinho</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/jquery-3.6.0.js"></script>
+    <script src="../js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

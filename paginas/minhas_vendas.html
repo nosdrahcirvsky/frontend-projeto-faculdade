@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1">
+
+    <title>Minhas vendas | ${usuario.nome}</title>
+
+    <link rel="shortcut icon" href="../images/silverware-1667988_640.png">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/conta-custom.css">
+    <link rel="stylesheet" href="../css/carrinho.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+    <style>
+        @media screen and (max-width: 800px) {
+            .nome-restaurate {
+                top: 0;
+                left: 50%;
+                width: 100%;
+                transform: translate(-50%, 0);
+                text-align: center;
+            }
+
+            .nome-item {
+                top: 10px;
+                margin-bottom: 10px;
+            }
+
+            .preco-item {
+                transform: translate(-65%, 0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-dark">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a href="../index">
+                <div class="logo"></div>
+            </a>
+            <div class="d-flex">
+                <a href="conta">
+                    <div class="nav-prof-pic rounded-circle" style="background-image: url('../images/uploads/${usuario.imagemPerfil}')"></div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="itens-container">
+        <h1 class="text-light text-center">Você ainda não vendeu 😕</h1>
+        <h1 class="text-light text-center">💰 Suas vendas</h1>
+        <hr>
+
+        <div class="item">
+            <div class="nome-restaurate">${venda.usuario.nome} comprou em ${venda.dataPedido}</div>
+            <div class="nome-item">${venda.prato.nomePrato}</div>
+            <div class="preco-item">R$ ${venda.total}</div>
+            <div class="parcelas-item">${venda.totalPacelas}</div>
+        </div>
+
+    </div>
+</body>
+
+</html>

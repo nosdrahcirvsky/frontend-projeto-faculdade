@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1">
+        
+        <title>Cadastre-se</title>
+        
+        <link rel="shortcut icon" href="../images/silverware-1667988_640.png">
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <link rel="stylesheet" href="../css/custom.css">
+    </head>
+
+    <body class="bg-dark">
+
+        <div class="container">
+            <div class="py-5 text-center">
+                <a href="../index"><img class="d-block mx-auto mb-4" src="../images/logodrrest.png" width="200"></a>
+            </div>
+                
+            <form action="../cadastrar" method="POST" class="needs-validation" novalidate>
+
+                <input type="text" class="form-control" name="nome" placeholder="Nome" required>
+                <div class="invalid-feedback">Insira o primeiro nome, por favor</div>
+
+                <input type="text" class="form-control mt-3" placeholder="Sobrenome" name="sobrenome">
+                
+                <input type="text" class="form-control mt-3" name="username" placeholder="Username" required>
+                <div class="invalid-feedback">
+                    É necessário informar o seu nick
+                </div>
+                
+                <input type="email" class="form-control mt-3" name="email" placeholder="seu@email.com" required>
+                <div class="invalid-feedback">
+                    É necessário informar um email válido
+                </div>
+                
+                <input type="text" class="form-control mt-3" placeholder="Telefone" name="phone" onkeypress="$(this).mask('(00) 0 0000-0000')" required>
+                <div class="invalid-feedback">
+                    É necessário informar um número de telefone
+                </div>
+                
+                <input type="password" class="form-control mt-3" name="pass" placeholder="Senha" required>
+                <div class="invalid-feedback">
+                    É necessário informar uma senha válida (entre 8 e 60 caracteres)
+                </div>
+                <button class="w-100 btn btn-primary btn-lg mt-5" type="submit">Cadastrar</button>
+
+            </form>
+        </div>
+
+        <!-- Script -->
+        <script src="../js/jquery-3.6.0.js"></script>
+        <script src="../js/jquery.mask.js"></script>
+        <script src="../js/bootstrap.bundle.js"></script>
+        <script src="../js/validation.js"></script>
+    </body>
+</html>

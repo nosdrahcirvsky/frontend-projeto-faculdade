@@ -1,0 +1,61 @@
+.container {
+    margin-bottom: 200px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.linha-vertical {
+    width: 200px;
+    height: 2px;
+    background-color: var(--corPrincipal);
+    display: block;
+}
+
+.links {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    font-size: 2em;
+    text-align: center;
+    color: var(--corTextoWhite);
+}
+
+.links div {
+    transition: 0.5s;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+.links a {
+    text-decoration: none;
+    color: var(--corTextoWhite);
+}
+
+.links div:hover {
+    background-color: black;
+    color: var(--corTextoWhite);
+}
+
+.links input {
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+.links:hover input {
+    color: white;
+}
+
+.continuar-btn {
+    background-color: var(--corPrincipal);
+    color: black;
+}
+
+.finalizar-btn {
+    background-color: darkgreen;
+}

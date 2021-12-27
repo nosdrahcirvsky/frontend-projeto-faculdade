@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1">
+
+        <title>Pedido | Cadastrar cartão</title>
+
+        <link rel="shortcut icon" href="../images/silverware-1667988_640.png">
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <link rel="stylesheet" href="../css/conta-custom.css">
+        <link rel="stylesheet" href="../css/carrinho.css">
+        <link rel="stylesheet" href="../css/custom.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    </head>
+
+    <body class="bg-dark">
+
+        <nav class="navbar">
+            <div class="container-fluid">
+                <a href="../index">
+                    <div class="logo"></div>
+                </a>
+                <div class="d-flex">
+                    <a href="conta">
+                        <div class="nav-prof-pic rounded-circle" style="background-image: url('../images/uploads/${usuario.imagemPerfil}')"></div>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mt-5 text-light">
+
+            <h2>Dados do cartão</h2>
+            <hr>
+            <form id="form-cartao" action="../CadastrarCartaoController" method="POST" class="needs-validation" novalidate>
+                <input type="hidden" name="usuario_id" value="${usuario.id}">
+                
+                <input type="text" class="form-control" name="numero_cartao" placeholder="Número do cartão" onkeypress="$(this).mask('0000 0000 0000 0000')" required>
+                <div class="invalid-feedback">Insira o número, por favor</div>
+
+                <input type="text" class="form-control mt-3" name="nome_titular" placeholder="Nome do titular do cartão" required>
+                <div class="invalid-feedback">Insira o nome, por favor</div>
+
+                <input type="text" class="form-control mt-3" name="cpf" placeholder="CPF" onkeypress="$(this).mask('000.000.000-00')" required>
+                <div class="invalid-feedback">
+                    É necessário informar o seu CPF
+                </div>
+                
+                <input type="text" class="form-control mt-3" name="data_validade_cartao" placeholder="Data de validade do cartão (MM/AA)" onkeypress="$(this).mask('00/00')" required>
+                <div class="invalid-feedback">
+                    É necessário informar a validade do cartão
+                </div>
+                
+                <input type="text" class="form-control mt-3" placeholder="Código CVV" name="codigo_cvv" onkeypress="$(this).mask('000')" required>
+                <div class="invalid-feedback">
+                    É necessário informar o CVV do cartão (3 números na parte de trás)
+                </div>
+                
+                <div class="mt-3">
+                    <select class="form-select" name="bandeira_cartao" autocomplete="off" required>
+                        <option value="Visa">Visa</option>
+                        <option value="Mastercard">Mastercard</option>
+                        <option value="Elo">Elo</option>
+                        <option value="Hipercard">Hipercard</option>
+                        <option value="Diners Club">Diners Club</option>
+                        <option value="American Express">American Express</option>
+                    </select>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="links">
+            <div><input type="submit" form="form-cartao" value="Continuar"></div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="../js/jquery-3.6.0.js"></script>
+        <script src="../js/bootstrap.bundle.js"></script>
+        <script src="../js/validation.js"></script>
+        <script src="../js/jquery.mask.js"></script>
+    </body>
+</html>

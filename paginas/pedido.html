@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1">
+
+        <title>Confirmar pedido</title>
+
+        <link rel="shortcut icon" href="../images/silverware-1667988_640.png">
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <link rel="stylesheet" href="../css/conta-custom.css">
+        <link rel="stylesheet" href="../css/pedido.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    </head>
+
+    <body class="bg-dark">
+        <nav class="navbar">
+            <div class="container-fluid">
+                <a href="../index">
+                    <div class="logo"></div>
+                </a>
+                <div class="d-flex">
+                    <a href="conta">
+                        <div class="nav-prof-pic rounded-circle" style="background-image: url('../images/uploads/${usuario.imagemPerfil}')"></div>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mt-5 text-light">
+
+            <h2>Confirme seu pedido</h2>
+
+            <hr>
+            <h4>Item selecionado</h4>
+
+            <div class="item">
+                <div> <div class="linha-vertical"></div> ${pratoSelecionado.nomePrato}</div>
+                <div>R$ ${pratoSelecionado.preco}</div>
+            </div>
+
+            <hr>
+            <h4>Dados de pagamento</h4>
+
+            <div class="item">
+                <div> <div class="linha-vertical"></div> Titular do cartão</div>
+                <div>${meuCartao.nomeTitular}</div>
+            </div>
+            <div class="item">
+                <div> <div class="linha-vertical"></div> CPF</div>
+                <div>${meuCartao.cpf}</div>
+            </div>
+            <div class="item">
+                <div> <div class="linha-vertical"></div> Número do titular</div>
+                <div>${usuario.telefone}</div>
+            </div>
+
+            <hr>
+            <h4>Endereço</h4>
+
+            <div class="item">
+                <div> <div class="linha-vertical"></div> ${meuEndereco.rua}, ${meuEndereco.bairro}, ${meuEndereco.cidade} (${meuEndereco.estado}), CEP ${meuEndereco.cep}</div>
+            </div>
+
+            <hr>
+
+            <div class="item">
+                <div> <h4>Total</h4></div>
+                <div>
+                    <h4>
+                        R$ ${pratoSelecionado.preco}
+                        
+                        <c:if test="${novoPreco != null}">
+                            (${pratoSelecionado.desconto}% off)
+                        </c:if>
+                    </h4>
+                </div>
+            </div>
+            <div class="item">
+                <div> <div class="linha-vertical"></div> Você paga</div>
+                <div></div>
+            </div>
+            
+            <form id="form-desconto" method="POST" action="../AplicarDescontoController">
+                <input type="hidden" name="id_prato" value="${pratoSelecionado.id}" />
+                <div class="item">
+                    <input class="w-100 form-control" id="codigoDesconto" name="cod_desconto" placeholder="Insira um cupom de desconto aqui" />
+                </div>
+                <div class="item">
+                    <button class="w-100 btn btn-lg btn-primary" type="submit" form="form-desconto">aplicar desconto</button>
+                </div>
+            </form>
+            
+            <form id="form-pedido" action="../FazerPedidoController" method="POST">
+                <input type="hidden" name="restaurante_id" value="${pratoSelecionado.restaurante.id}" />
+                <input type="hidden" name="prato_id" value="${pratoSelecionado.id}" />
+                <input type="hidden" name="cartao_id" value="${meuCartao.id}" />
+                <input type="hidden" name="endereco_id" value="${meuEndereco.id}" />
+                <input type="hidden" name="usuario_id" value="${usuarioId}" />
+                
+                <input id="dataPedido" type="hidden" name="data_pedido" value="" />
+                <input type="hidden" name="total" value="${pratoSelecionado.preco}" />
+                <input type="hidden" name="total_parcelas" value="${totalParcelas}" />
+            </form>
+
+        </div>
+
+        <div class="links">
+            <a href="carrinho"><div class="continuar-btn">Continuar comprando</div></a>
+            <div class="finalizar-btn"><input type="submit" form="form-pedido" value="Finalizar pedido" /></div>
+        </div>
+            
+        <!-- Scripts -->
+        <script src="../js/date.js"></script>
+    </body>
+</html>

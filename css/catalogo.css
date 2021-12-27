@@ -1,0 +1,121 @@
+.nav-cart {
+  position: relative;
+  background-color: transparent;
+  background-size: contain;
+  background-image: url("../images/shopping-gddb5b6da0_640.png");
+  border: none;
+}
+
+.total-de-itens {
+  position: absolute;
+  background-color: var(--corPrincipal);
+  padding: 3px 10px 3px 10px;
+  bottom: 0;
+  left: 0;
+  color: black;
+  border-radius: 150%;
+}
+
+.blocos-container {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.blocos-container .bloco {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 3px solid var(--corPrincipal);
+  display: inline-block;
+  margin: 5px;
+  width: 400px;
+  height: 500px;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.bloco:hover {
+  transform: translateY(-20px);
+}
+
+.bloco div {
+  color: var(--corTextoWhite);
+}
+
+.bloco .info-item {
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+.bloco .preco {
+  position: absolute;
+  color: green;
+  font-weight: bold;
+  top: 5px;
+  right: 15px;
+  font-size: 2em;
+}
+
+.bloco .qtd-vendas {
+  background-color: var(--corPrincipal);
+  color: black;
+  padding-left: 5px;
+  padding-right: 5px;
+  position: absolute;
+  right: 15px;
+  top: 50px;
+}
+
+.bloco .categoria {
+  background-color: var(--corPrincipal);
+  color: black;
+  padding-left: 5px;
+  padding-right: 5px;
+  position: absolute;
+  right: 15px;
+  top: 80px;
+}
+
+.bloco .add-carrinho {
+  background-color: var(--corPrincipal);
+  border-radius: 15px;
+  margin-bottom: auto;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 95%;
+  color: black;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+button {
+  background-color: transparent;
+  font-size: 25px;
+  border: none;
+  color: black;
+}
+
+.add-carrinho:hover button,
+.add-carrinho:hover {
+  background-color: black;
+  color: var(--corTextoWhite);
+}
+
+.total_preco {
+  position: fixed;
+  padding: 10px;
+  background-color: darkgreen;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 10px;
+  color: var(--corTextoWhite);
+  font-size: 2em;
+}

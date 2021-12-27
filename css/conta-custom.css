@@ -1,0 +1,189 @@
+:root {
+  --corPrincipal: #eef52a;
+  --corTextoWhite: #f8f9fa;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.capa {
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 10px;
+}
+
+.logo {
+  background-image: url("../images/logodrrest-menu.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 50px;
+}
+
+.profile-pic {
+  background-color: rgb(219, 219, 219);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav-prof-pic, .nav-cart {
+  background-image: url("../E4VwBlhWQAUM7AJ.jpeg");
+  background-color: rgb(219, 219, 219);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--corPrincipal);
+}
+
+.nome {
+  font-size: 50px;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 6px;
+  text-decoration-color: var(--corPrincipal);
+}
+
+.botao {
+  border: 3px solid var(--corPrincipal);
+  border-radius: 15px;
+  width: 300px;
+  height: 300px;
+  transition: 0.3s;
+  cursor: pointer;
+  font-size: 2em;
+}
+
+.botao:hover {
+  background-color: var(--corPrincipal);
+  color: black;
+}
+
+.botoes a, .botoes a:hover {
+    text-decoration: none;
+    color: var(--corTextoWhite);
+}
+
+.botao input[type="submit"] {
+  background-color: transparent;
+  border: none;
+  color: var(--corTextoWhite);
+}
+
+.botao:hover input[type="submit"] {
+  color: black;
+}
+
+.informacoes {
+  font-size: 2em;
+  color: black;
+}
+
+.btn-primary {
+  background-color: var(--corPrincipal);
+  color: black;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #000000;
+  color: var(--corTextoWhite);
+  border: none;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.418);
+}
+
+.form-control {
+  background-color: transparent;
+  color: var(--corTextoWhite);
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid var(--corPrincipal);
+}
+
+.form-control:focus {
+  background-color: transparent;
+  color: var(--corTextoWhite);
+  border-bottom: 2px solid var(--corPrincipal);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.imagem-btn {
+  background-color: var(--corPrincipal);
+  font-size: 24px;
+  border: none;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  padding-top: 16px;
+  padding-bottom: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+}
+
+.imagem-btn:hover {
+  background-color: transparent;
+  color: var(--corTextoWhite);
+  border: 3px solid var(--corPrincipal);
+}
+
+a {
+  text-decoration: none;
+  color: var(--corTextoWhite);
+  transition: 0.5s;
+}
+
+a:hover {
+  color: var(--corPrincipal);
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--corPrincipal);
+}
+
+@media screen and (max-width: 800px) {
+  .logo {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .botoes {
+    flex-direction: column;
+  }
+
+  .botoes div {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .informacoes {
+    flex-direction: column;
+  }
+
+  .informacoes div {
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+}

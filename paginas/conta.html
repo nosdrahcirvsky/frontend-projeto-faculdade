@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1">
+
+    <title>${usuario.nome}</title>
+
+    <link rel="shortcut icon" href="../images/silverware-1667988_640.png">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/conta-custom.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-dark">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a href="../index">
+                <div class="logo"></div>
+            </a>
+            <div class="d-flex">
+                <a href="conta">
+                    <div class="nav-prof-pic rounded-circle"
+                        style="background-image: url('../images/uploads/${usuario.imagemPerfil}')">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="capa"
+        style="background-image: linear-gradient(to bottom, transparent, black), url('../images/uploads/${usuario.imagemPerfil}');">
+        <div class="d-flex flex-column text-center text-light">
+            <div class="profile-pic rounded-circle"
+                style="background-image: url('../images/uploads/${usuario.imagemPerfil}');"></div>
+            <div class="nome">${usuario.nome} ${usuario.sobrenome}</div>
+        </div>
+    </div>
+    <hr class="text-light mt-5">
+    <div class="informacoes d-flex justify-content-evenly text-light">
+        <div class="d-flex flex-column align-items-center justify-content-center text-center">
+            <div>Seu restaurante</div>
+            <div>${restaurante.razaoSocial}</div>
+        </div>
+        <div class="d-flex flex-column align-items-center justify-content-center text-center">
+            <div>Vendas</div>
+            <div><a href="minhas_vendas">${totalVendas}</a></div>
+        </div>
+        <div class="d-flex flex-column align-items-center justify-content-center text-center">
+            <div>Lucro</div>
+            <div>R$ <span id="lucroTotal"></span></div>
+        </div>
+    </div>
+    <hr class="text-light">
+
+    <div class="botoes d-flex justify-content-evenly text-light mt-5 mb-5">
+        <div class="botao d-flex align-items-center justify-content-center text-center" data-bs-toggle="modal"
+            data-bs-target="#upImg">
+            Alterar foto de perfil
+        </div>
+        <div class="botao d-flex align-items-center justify-content-center text-center" data-bs-toggle="modal"
+            data-bs-target="#upInf">
+            Atualizar informações
+        </div>
+        <div class="botao d-flex align-items-center justify-content-center text-center" data-bs-toggle="modal"
+            data-bs-target="#cadastrarRest">
+            Criar meu primeiro restaurante
+        </div>
+        <a href="gerenciar_restaurante">
+            <div class="botao d-flex align-items-center justify-content-center text-center">Gerenciar meu
+                restaurante
+            </div>
+        </a>
+        <div class="botao d-flex align-items-center justify-content-center text-center">
+            <form action="../sair" method="POST">
+                <input type="submit" value="Sair" />
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para alterar dados -->
+    <div class="modal fade" id="upInf" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar informações</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <form action="../atualizarCadastro" method="POST" class="needs-validation" novalidate>
+                    <div class="m-3">
+                        <input type="hidden" name="id" value="${usuario.id}">
+                        <input type="text" class="form-control" name="nome" value="${usuario.nome}" required>
+                        <div class="invalid-feedback">Insira o primeiro nome, por favor</div>
+                    </div>
+
+                    <div class="m-3">
+                        <input type="text" class="form-control" name="sobrenome" value="${usuario.sobrenome}">
+                    </div>
+
+                    <div class="m-3">
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" name="username" value="${usuario.username}"
+                                required>
+                            <div class="invalid-feedback">
+                                É necessário informar o seu nick
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="m-3">
+                        <input type="email" class="form-control" name="email" value="${usuario.email}" required>
+                        <div class="invalid-feedback">
+                            É necessário informar um email válido
+                        </div>
+                    </div>
+
+                    <div class="m-3">
+                        <input type="text" class="form-control" name="phone"
+                            onkeypress="$(this).mask('(00) 0 0000-0000')" value="${usuario.telefone}" required>
+                        <div class="invalid-feedback">
+                            É necessário informar um número de telefone
+                        </div>
+                    </div>
+
+                    <div class="m-3">
+                        <input type="text" class="form-control" name="pass" value="${usuario.senha}" required>
+                        <div class="invalid-feedback">
+                            É necessário informar uma senha válida (entre 8 e 60 caracteres)
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary w-100">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para alterar imagem de perfil -->
+    <div class="modal fade" id="upImg" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header">
+                    <h5 class="modal-title">Alterar imagem de perfil</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <form action="../salvarImagem" method="POST" enctype="multipart/form-data">
+                    <div class="m-3">
+                        <label class="imagem-btn" for="profpic">Escolha algum arquivo</label>
+                        <input type="file" name="profile_pic" id="profpic" required />
+                        <input type="hidden" name="user_id" value="${usuario.id}" />
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary w-100">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para cadastrar restaurante -->
+    <div class="modal fade" id="cadastrarRest" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cadastrar restaurante</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <form action="../cadastrarRestaurante" method="POST" class="needs-validation" novalidate>
+                    <div class="m-3">
+                        <input type="hidden" name="id" value="${usuario.id}">
+                        <input type="text" class="form-control" onkeypress="$(this).mask('00.000.000/0000-00')"
+                            name="cnpj" placeholder="CNPJ" required>
+                        <div class="invalid-feedback">Informe o CNPJ</div>
+                    </div>
+
+                    <div class="m-3">
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" name="razao-social" placeholder="Razão Social"
+                                required>
+                            <div class="invalid-feedback">
+                                Campo obrigatório
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="m-3">
+                        <input type="text" class="form-control" name="phone"
+                            onkeypress="$(this).mask('(00) 0 0000-0000')" value="${usuario.telefone}" required>
+                        <div class="invalid-feedback">
+                            É necessário informar um número de telefone
+                        </div>
+                    </div>
+
+                    <div class="m-3">
+                        <select class="form-select" name="tipo">
+                            <option value="Fast Food">Fast Food</option>
+                            <option value="Vegetariano">Vegetariano</option>
+                            <option value="Pizzaria">Pizzaria</option>
+                            <option value="Coffee Shop">Coffee Shop</option>
+                            <option value="Cozinha Autoral">Cozinha Autoral</option>
+                            <option value="Grill">Grill</option>
+                            <option value="Hamburgueria">Hamburgueria</option>
+                            <option value="Internacional">Internacional</option>
+                            <option value="Churrascaria">Churrascaria</option>
+                            <option value="Comida Japonesa">Comida Japonesa</option>
+                            <option value="Cachaçaria">Cachaçaria</option>
+                            <option value="Cervejaria">Cervejaria</option>
+                            <option value="Coquetelaria">Coquetelaria</option>
+                            <option value="Sorveteria">Sorveteria</option>
+                            <option value="Confeitaria">Confeitaria</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary w-100">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/jquery-3.6.0.js"></script>
+    <script src="../js/jquery.mask.js"></script>
+    <script src="../js/bootstrap.bundle.js"></script>
+    <script src="../js/validation.js"></script>
+</body>
+
+</html>

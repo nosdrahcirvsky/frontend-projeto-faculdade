@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1">
+
+        <title>Pedido | Parcelamento</title>
+
+        <link rel="shortcut icon" href="../images/silverware-1667988_640.png">
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <link rel="stylesheet" href="../css/conta-custom.css">
+        <link rel="stylesheet" href="../css/carrinho.css">
+        <link rel="stylesheet" href="../css/custom.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    </head>
+
+    <body class="bg-dark">
+        <nav class="navbar">
+            <div class="container-fluid">
+                <a href="../index">
+                    <div class="logo"></div>
+                </a>
+                <div class="d-flex">
+                    <a href="conta">
+                        <div class="nav-prof-pic rounded-circle" style="background-image: url('../images/uploads/${usuario.imagemPerfil}')"></div>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mt-5 text-light">
+
+            <h2>Selecione o número de parcelas</h2>
+            <hr>
+            <form id="form-parcelas" action="../ParcelarController" method="POST">
+                
+                <input id="inputTotal" type="hidden" name="total-parcelado" value="" />
+                <input id="numeroParcelas" type="hidden" name="numero-parcelas" value="" />
+                <input id="varPreco" type="hidden" value="${pratoSelecionado.preco}" />
+
+                <div class="mt-3">
+                    <select class="form-select" name="parcelas" autocomplete="off" required>
+                        <option value="1" onclick="parcelar(1)">1x</option>
+                        <option value="2" onclick="parcelar(2)">2x</option>
+                        <option value="3" onclick="parcelar(3)">3x</option>
+                        <option value="4" onclick="parcelar(4)">4x</option>
+                    </select>
+                </div>
+
+            </form>
+
+            <h1 id="totalParcelado" class="text-center mt-5"></h1>
+
+        </div>
+
+        <div class="links">
+            <a href="#">
+                <div><input type="submit" form="form-parcelas" value="Continuar"></div>
+            </a>
+        </div>
+
+        <!-- Scripts -->
+        <script src="../js/parcelar.js"></script>
+    </body>
+</html>
